@@ -1,5 +1,5 @@
 import { useUser } from "../contexts/userContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ErrorAlert from "./alerts/errorAlert";
 import axios from "axios";
 import { useState } from "react";
@@ -26,10 +26,12 @@ export default function Navbar(){
     return (
         <div>
             <header className='navbar'>
-                <div className='navbar__title navbar__item'>Marhaba</div>
-                <div className='navbar__item'>About Us</div>
-                <div className='navbar__item'>Contact</div>
-                <div className='navbar__item'>Help</div>
+                <div className='navbar__title navbar__item'>Syndic</div>
+                <div className="flex w-full justify-center">
+                    <Link to={"/apartments"} className='navbar__item'>Apartments</Link>
+                    <Link to={"/payments"} className='navbar__item'>Payments</Link>
+                    <Link to={"/clients"} className='navbar__item'>Clients</Link>
+                </div>
                 <button className='navbar__item logout_button' onClick={logout}>Logout</button>        
             </header>
 

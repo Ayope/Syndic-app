@@ -2,6 +2,9 @@ import express  from "express";
 import { connectDb } from "./config/database.js";
 import authRouter from "./routes/authRoutes.js";
 import userRouter from "./routes/userRoutes.js";
+import apartmentRoutes from "./routes/apartmentRoutes.js";
+import paymentRoutes from "./routes/paymentRoutes.js";
+import clientRoutes from "./routes/clientRoutes.js";
 import generateJwtSecretKeyInEnvFile from "./helpers/generateSecretKey.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
@@ -28,6 +31,9 @@ generateJwtSecretKeyInEnvFile();
 
 app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter);
+app.use('/api/client', clientRoutes);
+app.use('/api/apartment', apartmentRoutes)
+app.use('/api/payment', paymentRoutes)
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerConfig));
 
