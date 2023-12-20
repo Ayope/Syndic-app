@@ -24,14 +24,31 @@ jobs:
               run: npm install
                   npm run test
 
-            - name: Get Pusher Email
-              id: get_pusher_email
-              run: echo ::set-output name=pusher_email::$(gh api users/${GITHUB_ACTOR} --jq .email)
-          
             - name: Send Email on Success
               if: success()
-              run: echo "Success! Tests passed." | mail -s "CI/CD Pipeline Success" ${{ steps.get_pusher_email.outputs.pusher_email }}
+              uses: dawidd6/action-send-mail@v2
+              with:
+                server_address: smtp.gmail.com
+                server_port: 465
+                username: ${{secrets.MAIL_USERNAME}}
+                password: ${{secrets.MAIL_PASSWORD}}
+                subject: New push to the repo
+                body: New push made to the main with the test succeded.
+                to: ayoubelayouk1@gmail.com
+                from: ${{secrets.MAIL_USERNAME}}
         
+                
             - name: Send Email on Failure
               if: failure()
-              run: echo "Failure! Tests failed." | mail -s "CI/CD Pipeline Failure" ${{ steps.get_pusher_email.outputs.pusher_email }}
+              uses: dawidd6/action-send-mail@v2
+              with:
+                server_address: smtp.gmail.com
+                server_port: 465
+                username: ${{secrets.MAIL_USERNAME}}
+                password: ${{secrets.MAIL_PASSWORD}}
+                subject: New push to the repo
+                body: The test fails on the latest push to the main.
+                to: ayoubelayouk1@gmail.com
+                from: ${{secrets.MAIL_USERNAME}}
+        
+        
