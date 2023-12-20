@@ -21,8 +21,9 @@ jobs:
 
             - name: Install Dependencies and Run Tests
               working-directory: api
-              run: npm install
-                  npm run test
+              run: |
+                npm install
+                npm run test
 
             - name: Send Email on Success
               if: success()
