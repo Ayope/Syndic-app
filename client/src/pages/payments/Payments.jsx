@@ -106,7 +106,8 @@ export default function Payments() {
       }, [isDeletionConfirmed]);
 
     return (
-        <div>
+        <div className="w-full">
+            <h1 className="pt-9 pb-8 text-center text-5xl">Payments</h1>
             {errorMessage && <ErrorAlert message={errorMessage} />}
             {successMessage && <SuccessAlert message={successMessage} />}
             <table className="mt-8 w-full text-center">

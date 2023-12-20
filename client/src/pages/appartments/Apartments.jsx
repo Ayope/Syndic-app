@@ -71,14 +71,15 @@ export default function Apartments() {
     }, [isDeletionConfirmed]);
 
     return (
-        <div>
+        <div className="w-full">
+            <h1 className="pt-9 pb-8 text-center text-5xl">Apartments</h1>
             {errorMessage && <ErrorAlert message={errorMessage} />}
             {successMessage && <SuccessAlert message={successMessage} />}
             <Link
                 to="/add_apartment"
-                className="bg-blue-500 text-white py-2 px-4 mx-4 mb-1 mt-4 rounded inline-block float-right"
+                className="bg-blue-600 text-white py-2 px-4 mx-4 mb-1 mt-4 me-9 rounded inline-block float-right"
             >
-                Add Apartment
+               + Add Apartment
             </Link>
 
             <table className="mt-8 w-full text-center">

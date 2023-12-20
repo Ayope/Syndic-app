@@ -127,7 +127,8 @@ export default function Clients() {
     }, [isDeletionConfirmed]);
 
     return (
-        <div>
+        <div className="w-full">
+            <h1 className="pt-9 pb-8 text-center text-5xl">Clients</h1>
             {errorMessage && <ErrorAlert message={errorMessage} />}
             {successMessage && <SuccessAlert message={successMessage} />}
             <table className="mt-8 w-full text-center">

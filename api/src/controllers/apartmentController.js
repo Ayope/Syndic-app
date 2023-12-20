@@ -14,11 +14,11 @@ export default class ApartmentController {
                   ? validation.validateApartmentNewClient(req, res)
                   : validation.validateApartment(req, res);
             
-            if (validateResult.error) {
+            if (validateResult.error) { // 3
               errorHandler(validateResult.error);
             }            
           
-            if (currentClient === "addNew") {
+            if (currentClient === "addNew") { // 4
                 if(await clientModel.findOne({cin : cin , isDeleted : false})){
                     throw "cin already exist";
                 }
@@ -35,7 +35,7 @@ export default class ApartmentController {
             }
 
             const apartment = { number, building, currentClient, status };
-            await ApartmentModel.Insert(apartment);
+            await ApartmentModel.Insert(apartment);//3
 
             res.status(201).json({
                 success: "Apartment Successfully Added!",

@@ -1,11 +1,11 @@
 import bcryptjs from 'bcryptjs';
 import RoleModel from "../models/roleModel";
-import validation from '../requests/authValidation';
+import validation from '../validations/authValidation';
 import AuthController from '../controllers/authController';
 import AuthModel from '../models/authModel'; 
 import { jest } from '@jest/globals';
 
-jest.mock('../requests/authValidation');
+jest.mock('../validations/authValidation');
 
 jest.spyOn(bcryptjs, 'hash').mockResolvedValue('mockedHashedPassword');
 

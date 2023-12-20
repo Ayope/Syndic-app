@@ -26,7 +26,7 @@ export default function Navbar(){
     return (
         <div>
             <header className='navbar'>
-                <div className='navbar__title navbar__item'>Syndic</div>
+                <Link to={"/apartments"} className='navbar__title navbar__item'>Syndic</Link>
                 <div className="flex w-full justify-center">
                     <Link to={"/apartments"} className='navbar__item'>Apartments</Link>
                     <Link to={"/payments"} className='navbar__item'>Payments</Link>

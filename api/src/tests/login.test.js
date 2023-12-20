@@ -2,10 +2,10 @@ import AuthController from '../controllers/authController';
 import AuthModel from '../models/authModel';
 import bcryptjs from 'bcryptjs'
 import tokenHandler from '../helpers/tokenHandler';
-import AuthValidation from '../requests/authValidation';
+import AuthValidation from '../validations/authValidation';
 import { jest } from '@jest/globals';
 
-jest.mock('../requests/authValidation');
+jest.mock('../validations/authValidation');
 
 const res = {
   status: jest.fn().mockReturnThis(),

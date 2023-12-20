@@ -28,6 +28,9 @@
     "swagger-ui-express": "^5.0.0"
   },
   "jest": {
-    "transform": {}
+    "transform": {},
+    "collectCoverage": true,
+    "collectCoverageFrom": ["src/**/*.js"],
+    "coverageReporters": ["json", "lcov", "text", "clover"]
   }
 }

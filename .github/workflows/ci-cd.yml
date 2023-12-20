@@ -1,0 +1,37 @@
+name: CI/CD Pipeline
+
+on:
+    push:
+        branches:
+            - main
+    workflow_dispatch:
+
+jobs:
+    test_and_notify:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v2
+
+            - name: Set up Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20.8.0
+
+            - name: Install Dependencies and Run Tests
+              working-directory: api
+              run: npm install
+                  npm run test
+
+            - name: Get Pusher Email
+              id: get_pusher_email
+              run: echo ::set-output name=pusher_email::$(gh api users/${GITHUB_ACTOR} --jq .email)
+          
+            - name: Send Email on Success
+              if: success()
+              run: echo "Success! Tests passed." | mail -s "CI/CD Pipeline Success" ${{ steps.get_pusher_email.outputs.pusher_email }}
+        
+            - name: Send Email on Failure
+              if: failure()
+              run: echo "Failure! Tests failed." | mail -s "CI/CD Pipeline Failure" ${{ steps.get_pusher_email.outputs.pusher_email }}
