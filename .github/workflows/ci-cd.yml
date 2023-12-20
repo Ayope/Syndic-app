@@ -23,6 +23,7 @@ jobs:
               working-directory: api
               run: |
                 npm install
+                npm run create-env
                 npm run test
 
             - name: Send Email on Success
