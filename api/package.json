@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-    "start": "nodemon ./src/server.js"
+    "start": "nodemon ./src/server.js",
+    "create-env" : "node src/scripts/createEnvFileWithSecretJwtToken.js"
   },
   "keywords": [],
   "author": "",

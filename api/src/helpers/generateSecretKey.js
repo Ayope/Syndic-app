@@ -2,8 +2,7 @@ import crypto from 'crypto'
 import fs from 'fs';
 
 const secretKey = crypto.randomBytes(32).toString('hex');
-const envPath = './.env'
-
+const envPath = './.env';
 
 export default function generateJwtSecretKeyInEnvFile(){
 
