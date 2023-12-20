@@ -29,7 +29,9 @@
   }
   ,
   "jest": {
-    "transform": {}
-    
+    "transform": {},
+    "collectCoverage": true,
+    "collectCoverageFrom": ["src/**/*.js"],
+    "coverageReporters": ["json", "lcov", "text", "clover"]
   }
 }
