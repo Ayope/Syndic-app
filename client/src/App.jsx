@@ -23,14 +23,13 @@ function App() {
   const location = useLocation();
 
   const shouldRenderNavbar = location.pathname !== '/register'
-                            || location.pathname !== '/login'
-                            || location.pathname !== '/forgot'
-                            || location.pathname !== "/verify"
-                            || location.pathname.startsWith('/reset/');
+                            && location.pathname !== '/login'
+                            && location.pathname !== '/forgot'
+                            && location.pathname !== "/verify"
+                            && !location.pathname.startsWith('/reset/');
 
 
   
-
   return (
     <UserContextProvider>
       {shouldRenderNavbar && <Navbar/>}
